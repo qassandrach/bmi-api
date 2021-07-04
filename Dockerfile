@@ -4,8 +4,6 @@ WORKDIR /usr/src/app
 
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
-ENV FLASK_APP=app.py 
-ENV FLASK_ENV=development
 
 COPY app.py .
 
