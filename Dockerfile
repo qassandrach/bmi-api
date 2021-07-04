@@ -4,10 +4,10 @@ WORKDIR /usr/src/app
 
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
-ENV FLASK_APP=bmi.py 
+ENV FLASK_APP=app.py 
 ENV FLASK_ENV=development
 
-COPY bmi.py .
+COPY app.py .
 
 EXPOSE 5000
 
