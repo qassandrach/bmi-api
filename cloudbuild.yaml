@@ -7,14 +7,14 @@ steps:
   #   entrypoint: python
   #   args: ["-m", "pytest", "--junitxml=${SHORT_SHA}_test_log.xml"] 
 
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'asia.gcr.io/$PROJECT_ID/bmi', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'asia.gcr.io/$PROJECT_ID/bmi', '.']
 
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'asia.gcr.io/$PROJECT_ID/bmi']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia.gcr.io/$PROJECT_ID/bmi']
 
-  - name: google/cloud-sdk
-    args: ['gcloud', 'run', 'deploy', 'bmi-api', 
-           '--image=asia.gcr.io/$PROJECT_ID/bmi', 
-           '--region', 'asia-southeast2, '--platform', 'managed', 
-           '--allow-unauthenticated']
+- name: google/cloud-sdk
+  args: ['gcloud', 'run', 'deploy', 'bmi-api', 
+          '--image=asia.gcr.io/$PROJECT_ID/bmi', 
+          '--region', 'asia-southeast2, '--platform', 'managed', 
+          '--allow-unauthenticated']
