@@ -14,7 +14,7 @@ steps:
   args: ['push', 'asia.gcr.io/$PROJECT_ID/bmi']
 
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['gcloud', 'run', 'deploy', 'bmi-api', '--image=asia.gcr.io/$PROJECT_ID/bmi', '--region', 'asia-southeast2, '--platform', 'managed', '--allow-unauthenticated']
+  args: ['gcloud', 'run', 'deploy', 'bmi-api', '--image=asia.gcr.io/$PROJECT_ID/bmi', '--region', 'asia-southeast2', '--platform', 'managed', '--allow-unauthenticated']
 
 # - name: 'google/cloud-sdk'
 #   args: ['gcloud', 'run', 'deploy', 'bmi-api', '--image=asia.gcr.io/$PROJECT_ID/bmi', '--region', 'asia-southeast2, '--platform', 'managed', '--allow-unauthenticated']
