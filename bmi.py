@@ -16,7 +16,7 @@ def index():
 
     if bmi < 18.5:
         health_status = "underweight :("
-    elif bmi > 18.5 or bmi <= 24.9:
+    elif bmi >= 18.5 and bmi <= 24.9:
         health_status = "healthy :)"
     elif bmi >= 25.0:
         health_status = "overweight :("
