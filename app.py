@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request
 from flask_restful import Resource, Api
 
@@ -5,29 +6,35 @@ app = Flask(__name__)
 api = Api(app)
 
 
-# @app.route("/")
+
 class Bmi (Resource):
+   
 
     def get(self):
+        weight = request.args.get('weight', default=None, type=int)
+        height = request.args.get('height', default=None, type=int)
 
-        weight = request.args.get('weight', type=int)
-        height = request.args.get('height', type=int)
+        if weight is None and height is None:
+            return "ok"
+        else:
+            message = {}
 
-        bmi = round((weight/pow((height/100),2)),2)
-        health_status = ""
+            bmi = round((weight/pow((height/100),2)),2)
 
-        if bmi < 18.5:
-            health_status = "underweight :("
-        elif bmi >= 18.5 and bmi <= 24.9:
-            health_status = "healthy :)"
-        elif bmi >= 25.0:
-            health_status = "overweight :("
+            if bmi < 18.5:
+                message["bmi"] = bmi
+                message["label"] = "underweight"
+            elif bmi >= 18.5 and bmi <= 24.9:
+                message["bmi"] = bmi
+                message["label"] = "healthy"
+            elif bmi >= 25.0:
+                message["bmi"] = bmi
+                message["label"] = "overweight"
+            
+            return message
         
-        return {"bmi": bmi,
-        "label": health_status}
 
-api.add_resource(Bmi, '/')
-
+api.add_resource(Bmi, "/")
 
 if __name__ == '__main__':
-   app.run('0.0.0.0','5000')
+   app.run(debug=True, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
