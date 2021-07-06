@@ -3,7 +3,8 @@ steps:
   entrypoint: pip
   args: ["install", "-r", "requirements.txt", "--user"]
 
-- entrypoint: python
+- name: python
+  entrypoint: python
   args: ["test_app.py"] 
 
 - name: 'gcr.io/cloud-builders/docker'
