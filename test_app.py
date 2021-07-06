@@ -26,5 +26,7 @@ class TestCases(unittest.TestCase):
 
         self.assertEqual(data["error"], "float division by zero")
 
+unittest.main()
+
 
 
