@@ -13,19 +13,23 @@ class Bmi(ABC):
     def calculate(self):
         result = {}
 
-        bmi = round((self.weight/pow((self.height/100),2)),2)
+        try:
+            bmi = round((self.weight/pow((self.height/100),2)),2)
 
-        if bmi < 18.5:
-            result["bmi"] = bmi
-            result["label"] = "underweight"
-        elif bmi >= 18.5 and bmi <= 24.9:
-            result["bmi"] = bmi
-            result["label"] = "healthy"
-        elif bmi >= 25.0:
-            result["bmi"] = bmi
-            result["label"] = "overweight"
-            
-        return result
+            if bmi < 18.5:
+                result["bmi"] = bmi
+                result["label"] = "underweight"
+            elif bmi >= 18.5 and bmi <= 24.9:
+                result["bmi"] = bmi
+                result["label"] = "healthy"
+            elif bmi >= 25.0:
+                result["bmi"] = bmi
+                result["label"] = "overweight"
+                
+            return result
+        except:
+            raise ValueError("Weight and Height cannot be zero")
+
 
 class Response(Bmi):
     def calculate(self):
@@ -47,4 +51,4 @@ class Request(Resource):
 api.add_resource(Request, "/")
 
 if __name__ == '__main__':
-   app.run('0.0.0.0','5000')
+   app.run('0.0.0.0','8080')
