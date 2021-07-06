@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
 from abc import ABC, abstractmethod
 
@@ -16,7 +16,6 @@ class Bmi(ABC):
 
         try:
             bmi = round((self.weight/pow((self.height/100),2)),2)
-
             if bmi < 18.5:
                 result["bmi"] = bmi
                 result["label"] = "underweight"
@@ -26,11 +25,12 @@ class Bmi(ABC):
             elif bmi >= 25.0:
                 result["bmi"] = bmi
                 result["label"] = "overweight"
-                
-            return result
-        except:
-            raise ValueError("Weight and Height cannot be zero")
+            
+        except ZeroDivisionError as e:
+            return jsonify(error=str(e))
 
+        return result
+        
 
 class Response(Bmi):
     def calculate(self):
@@ -52,4 +52,4 @@ class Request(Resource):
 api.add_resource(Request, "/")
 
 if __name__ == '__main__':
-   app.run('0.0.0.0','5000')
+   app.run('0.0.0.0','8080')

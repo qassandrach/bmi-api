@@ -3,9 +3,9 @@ steps:
   #   entrypoint: pip
   #   args: ["install", "-r", "requirements.txt", "--user"]
 
-  # - name: python
-  #   entrypoint: python
-  #   args: ["-m", "pytest", "--junitxml=${SHORT_SHA}_test_log.xml"] 
+- name: python
+  entrypoint: python
+  args: ["test_app.py"] 
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'asia.gcr.io/$PROJECT_ID/bmi', '.']
