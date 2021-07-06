@@ -2,7 +2,6 @@ import json, unittest
 
 import app
 
-
 class TestCases(unittest.TestCase):
     def setUp(self):
         app.app.config['TESTING'] = True
