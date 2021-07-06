@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request
 from flask_restful import Resource, Api
-from abc import ABC
+from abc import ABC, abstractmethod
 
 app = Flask(__name__)
 api = Api(app)
@@ -11,6 +11,7 @@ class Bmi(ABC):
         self.weight = weight
         self.height = height
    
+    @abstractmethod
     def calculate(self):
         result = {}
 
@@ -39,7 +40,7 @@ class Request(Resource):
         height = request.args.get('height', default=None, type=int)
 
         if weight is None and height is None:
-            return 200
+            return {"status": 200}
         else:
             bmi = Response(weight, height)
             response = bmi.calculate()
