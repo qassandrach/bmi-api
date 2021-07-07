@@ -1,4 +1,4 @@
-# Body Mass Index (BMI) API 
+# Calculate Body Mass Index (BMI) 
 API to calculate health status based on Body Mass Index (BMI). Live URL https://bmi-api-7kh3wpfy3a-et.a.run.app/
 ## Built with
 - Flask 2.0.1
