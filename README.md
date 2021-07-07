@@ -3,6 +3,7 @@ API to calculate health status based on Body Mass Index (BMI). Live URL https://
 ## Built with
 - Flask 2.0.1
 - Flask-RESTful 0.3.9
+- Docker
 - Google Cloud Run
 - Google Container Registry
 - Google Cloud Build
