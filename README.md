@@ -5,7 +5,7 @@ API to calculate health status based on Body Mass Index (BMI). Live URL https://
 - Flask-RESTful 0.3.9
 - Docker
 - Google Cloud Run
-- Google Container Registry
+- Google Artifact Registry
 - Google Cloud Build
 ## Set Up
 1. Install [python](https://www.python.org/downloads/), [pip](https://pip.pypa.io/en/stable/cli/pip_install/), [venv](https://cloud.google.com/python/docs/setup) and [docker](https://docs.docker.com/get-docker/) (optional)
@@ -17,19 +17,25 @@ API to calculate health status based on Body Mass Index (BMI). Live URL https://
     python3 -m venv env
     source env/bin/activate
     ```
-2. Run `pip install -r requirements.txt`
-3. Run `python ./app.py`
+2. Run installation
+    ```
+    pip install -r requirements.txt
+    ```
+3. Run the app 
+    ```
+    python ./app.py
+    ```
 4. Test the URL http://localhost:5000/?weight=55&height=167.
 ## Run the App (with docker)
 1. Create docker image 
 
     ```
-    docker build -t <image name>:<tag> .
+    docker build -t bmi-image:latest .
     ```
 2. Run docker container 
 
     ```
-    docker run -d -p 5000:5000 --name <app name> <image name>:<tag>
+    docker run -d -p 5000:5000 --name bmi-api bmi-image:latest
     ```
 3.  Test the URL http://localhost:5000/?weight=55&height=167.
 ## Unit Test
@@ -44,11 +50,14 @@ API to calculate health status based on Body Mass Index (BMI). Live URL https://
     python ./test_app.py
     ```
 ## Deployment
-1. Installing and initialize [Cloud SDK] (https://cloud.google.com/sdk/docs/install)
-2. Execute
+Shell script to create Artifact Registry and Build Trigger in Google Cloud.
+1. Fork the repository
+2. Installing and initialize [Cloud SDK](https://cloud.google.com/sdk/docs/install)
+3. Execute the script
 
     ```
     chmod +x deployment.sh
     ./deployment.sh
     ``` 
+4. Create commit to branch `main` in the forked repository to trigger the build, test, and deployment
 
