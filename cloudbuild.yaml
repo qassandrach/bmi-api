@@ -14,7 +14,7 @@ steps:
   args: ['push', 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/bmi-repo/bmi:$SHORT_SHA']
 
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'bmi-api', '--image=asia-southeast2-docker.pkg.dev/$PROJECT_ID/bmi-repo/bmi:$SHORT_SHA', '--region', 'asia-southeast2', '--platform', 'managed', '--allow-unauthenticated']
+  args: ['run', 'deploy', 'bmi-api', '--image=asia-southeast2-docker.pkg.dev/$PROJECT_ID/bmi-repo/bmi:$SHORT_SHA', '--region', 'asia-southeast2', '--platform', 'managed', '--port', '5000', '--allow-unauthenticated']
 
 images:
 - asia-southeast2-docker.pkg.dev/$PROJECT_ID/bmi-repo/bmi:$SHORT_SHA
