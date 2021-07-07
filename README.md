@@ -44,4 +44,11 @@ API to calculate health status based on Body Mass Index (BMI). Live URL https://
     python ./test_app.py
     ```
 ## Deployment
+1. Installing and initialize [Cloud SDK] (https://cloud.google.com/sdk/docs/install)
+2. Execute
+
+    ```
+    chmod +x deployment.sh
+    ./deployment.sh
+    ``` 
 
