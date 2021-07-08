@@ -50,14 +50,22 @@ API to calculate health status based on Body Mass Index (BMI). Live URL https://
     python app/test_app.py
     ```
 ## Deployment
-Shell script to create Artifact Registry and Build Trigger in Google Cloud.
+Create Artifact Registry and Build Trigger in Google Cloud.
 1. Fork the repository
-2. Installing and initialize [Cloud SDK](https://cloud.google.com/sdk/docs/install)
-3. Execute the script
+2. Install and initialize [Cloud SDK](https://cloud.google.com/sdk/docs/install)
+3. Create Artifact Registry
 
     ```
-    chmod +x deployment.sh
-    ./deployment.sh
-    ``` 
-4. Create commit to branch `main` in the forked repository to trigger the build, test, and deployment
+   gcloud artifacts repositories create bmi-repo --repository-format=docker --location=asia-southeast2 --description="Docker repository"
+   ``` 
+4. Create Build Triggers
+
+    ```
+    gcloud beta builds triggers create github --repo-name=bmi-api \
+    --repo-owner=YOUR_GITHUB_USERNAME \
+    --branch-pattern=^main$ \
+    --build-config=cloudbuild.yaml \
+    --name=bmi-api
+    ```
+5. Create commit to branch `main` in the forked repository to trigger the build, test, and deployment to Cloud Run
 
