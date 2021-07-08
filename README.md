@@ -23,7 +23,7 @@ API to calculate health status based on Body Mass Index (BMI). Live URL https://
     ```
 3. Run the app 
     ```
-    python ./app.py
+    python app/app.py
     ```
 4. Test the URL http://localhost:5000/?weight=55&height=167.
 ## Run the App (with docker)
@@ -47,7 +47,7 @@ API to calculate health status based on Body Mass Index (BMI). Live URL https://
 2. Run Test
 
     ```
-    python ./test_app.py
+    python app/test_app.py
     ```
 ## Deployment
 Shell script to create Artifact Registry and Build Trigger in Google Cloud.
