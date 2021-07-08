@@ -5,7 +5,7 @@ steps:
 
 - name: python
   entrypoint: python
-  args: ["test_app.py"] 
+  args: ["app/test_app.py"] 
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/bmi-repo/bmi:$SHORT_SHA', '.']
