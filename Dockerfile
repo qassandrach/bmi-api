@@ -1,17 +1,15 @@
 FROM python:3.8-alpine
 
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-USER appuser
+RUN adduser -D appuser 
 
-WORKDIR /usr/src
+USER appuser 
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+COPY requirements.txt /usr/src
 
-COPY ./app /usr/src/app
+RUN pip install -r /usr/src/requirements.txt
+
+COPY --chown=appuser:appuser ./app /usr/src/app
 
 WORKDIR /usr/src/app
-
-EXPOSE 5000
 
 CMD ["python", "app.py"]
