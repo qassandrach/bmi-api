@@ -1,9 +1,4 @@
-## Describe your changes
+**ℹ️ Please go the the `Preview` tab and select the appropriate sub-template:**
 
-## Issue ticket number and link
-
-## Checklist before requesting a review
-- [ ] I have performed a self-review of my code
-- [ ] If it is a core feature, I have added thorough tests.
-- [ ] Do we need to implement analytics?
-- [ ] Will this be part of a product update? If yes, please write one phrase about this update.
+* [Group A](?expand=1&template=pull_request_template_first.md)
+* [Group B](?expand=1&template=pull_request_template_two.md)
