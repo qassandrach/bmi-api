@@ -18,4 +18,4 @@ steps:
 
 images:
 - asia-southeast2-docker.pkg.dev/$PROJECT_ID/bmi-repo/bmi:$SHORT_SHA
-
+#dummy
